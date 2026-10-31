@@ -1,26 +1,349 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: #f7f5f0;
+  --color-foreground: #302b26;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  color-scheme: light;
+  background: #f7f5f0;
+  color: #302b26;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  min-height: 100%;
+  background:
+    radial-gradient(ellipse at 2% 2%, rgba(233, 220, 199, 0.34), transparent 34rem),
+    #f7f5f0;
+  color: #302b26;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.font-display {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.brand-mark {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid #e4d7c4;
+  border-radius: 14px;
+  background: #f1e8db;
+}
+
+.brand-mark svg {
+  width: 25px;
+  stroke: #765d3c;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.hero-card {
+  position: relative;
+  min-height: 205px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(118deg, #39352f 0%, #51463a 100%);
+  padding: 27px 30px;
+  box-shadow: 0 12px 30px rgba(50, 42, 33, 0.1);
+}
+
+.hero-decoration {
+  position: absolute;
+  right: 7%;
+  bottom: -34px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  opacity: 0.25;
+}
+
+.hero-decoration span {
+  display: block;
+  width: 62px;
+  height: 138px;
+  border: 1px solid #d5bd98;
+  border-radius: 13px 13px 8px 8px;
+  background: linear-gradient(90deg, rgba(233, 216, 186, 0.12), rgba(233, 216, 186, 0.3));
+}
+
+.hero-decoration span:nth-child(2) {
+  height: 112px;
+}
+
+.hero-decoration span:nth-child(3) {
+  height: 126px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  color: #9a8d7b;
+}
+
+.summary-card,
+.surface-card {
+  border: 1px solid #ece6dc;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 5px 18px rgba(65, 53, 38, 0.035);
+}
+
+.summary-card {
+  position: relative;
+  min-height: 205px;
+  overflow: hidden;
+  padding: 18px 12px;
+}
+
+.summary-neutral {
+  background: #fff;
+}
+
+.summary-amber {
+  background: #fbf7f0;
+}
+
+.summary-green {
+  background: #f5f8f2;
+}
+
+.summary-dot {
+  position: absolute;
+  right: -15px;
+  bottom: -19px;
+  width: 67px;
+  height: 67px;
+  border-radius: 50%;
+  background: #eee8de;
+}
+
+.summary-amber .summary-dot {
+  background: #f0e2c8;
+}
+
+.summary-green .summary-dot {
+  background: #e2ecdf;
+}
+
+.button-primary,
+.button-secondary,
+.button-danger {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 11px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.button-primary {
+  border: 1px solid #413a31;
+  background: #413a31;
+  color: #fff;
+}
+
+.button-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #554a3d;
+}
+
+.button-secondary {
+  border: 1px solid #e5dfd5;
+  background: #fff;
+  color: #51493f;
+}
+
+.button-secondary:hover:not(:disabled) {
+  background: #f8f5f0;
+}
+
+.button-danger {
+  border: 1px solid #eed9d4;
+  background: #fff9f7;
+  color: #9a4a3b;
+}
+
+.button-danger:hover:not(:disabled) {
+  background: #fff0ec;
+}
+
+.order-row {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  text-align: left;
+  transition: background-color 120ms ease;
+}
+
+.order-row:hover,
+.order-row-selected {
+  background: #faf8f4;
+}
+
+.order-row-selected {
+  box-shadow: inset 3px 0 #9c7951;
+}
+
+.status-pill {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.status-pending {
+  background: #f6ecd9;
+  color: #8b6735;
+}
+
+.status-preparing {
+  background: #e8eef5;
+  color: #526d8a;
+}
+
+.status-delivered {
+  background: #e8f0e5;
+  color: #52714c;
+}
+
+.empty-state {
+  display: flex;
+  min-height: 330px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.empty-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 16px;
+  background: #f4ede2;
+  color: #9b7952;
+  font-size: 24px;
+}
+
+.field-label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #5a5248;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.field-input {
+  min-height: 43px;
+  width: 100%;
+  border: 1px solid #e5dfd5;
+  border-radius: 10px;
+  background: #fff;
+  padding: 0 11px;
+  color: #302b26;
+  font-size: 13px;
+  font-weight: 400;
+  outline: none;
+}
+
+.field-input:focus {
+  border-color: #9b7952;
+  box-shadow: 0 0 0 3px rgba(155, 121, 82, 0.14);
+}
+
+.field-input::placeholder {
+  color: #b0a79b;
+}
+
+.form-error {
+  border: 1px solid #e9c9c0;
+  border-radius: 10px;
+  background: #fff4f1;
+  padding: 10px 12px;
+  color: #8b3c2b;
+  font-size: 12px;
+}
+
+.detail-list > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #f0ebe3;
+  padding: 12px 0;
+  font-size: 13px;
+}
+
+.detail-list dt {
+  color: #82796e;
+}
+
+.detail-list dd {
+  overflow-wrap: anywhere;
+  color: #3b352e;
+  font-weight: 500;
+  text-align: right;
+}
+
+.detail-list .detail-total {
+  border: 0;
+  padding-top: 16px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.detail-total dt,
+.detail-total dd {
+  color: #342f29;
+}
+
+@media (min-width: 768px) {
+  .order-row {
+    grid-template-columns: minmax(145px, 1.3fr) minmax(135px, 1fr) 70px 90px 110px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .summary-card {
+    min-height: 130px;
+    padding: 14px 9px;
+  }
 }

@@ -1,9 +1,6 @@
-# Employee Explorer — Assignment 3
+# Nour's Order Desk
 
-**Student:** Mohamad Sayed Ahmad
-**Framework:** Next.js 16.4.2 (App Router)
-
-Employee Explorer is a one-page dashboard demonstrating server-side data fetching, focused Suspense streaming, client-side requests, and API failure handling.
+A single dashboard for Nour to record candle orders, find customer details, track preparation status, and remove accidental entries.
 
 ## Run locally
 
@@ -16,18 +13,18 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Dashboard
+## Order workflow
 
-- The server-rendered profile fetches user/employee ID 1 from `https://jsonplaceholder.typicode.com/users/1` and shows the name, email, and company.
-- The server-rendered recent-post preview fetches posts for ID 1 and displays up to three titles inside its own Suspense boundary.
-- The preview includes an intentional two-second request-time delay to demonstrate the Suspense fallback. This is a learning simulation, not API latency.
-- **Explore all posts** does not make a browser request until **Load posts** is clicked. The **Demo scenario** selector applies to the next load or retry:
-  - **Success:** requests real posts from JSONPlaceholder.
-  - **Slow:** waits two seconds, then requests real posts.
-  - **HTTP error:** creates a local simulated HTTP 503 response.
-  - **Empty:** creates a local successful JSON response containing an empty array.
+- View customer, product, quantity, total, and status in the order list.
+- Open an order to see its phone number, unit price, total, and date.
+- Create orders with a customer name, phone number, catalogue product, quantity, and editable unit price.
+- Edit order information and set its status to Pending, Preparing, or Delivered.
+- Delete an order only after confirming the action.
+- See live counts for all, pending, and delivered orders.
 
-The HTTP error and empty responses are simulations, not responses returned by JSONPlaceholder. The app requires a network connection for the profile and real-post requests. Profile-specific error handling is intentionally kept separate from the browser section.
+Every list, detail, create, update, and delete action uses the `/api/orders` Route Handlers. Orders are held in server process memory for this MVP; restarting the server clears them. There is no database, account system, payment workflow, messaging integration, inventory tracking, or multi-product order support.
+
+The teaching catalogue is Vanilla Candle ($8.00), Cedar Candle ($10.00), and Mini Gift Candle ($6.00), all in USD. Suggested prices can be edited per order.
 
 ## Validate
 
@@ -35,9 +32,3 @@ The HTTP error and empty responses are simulations, not responses returned by JS
 npm run lint
 npm run build
 ```
-
-## Assignment notes and evidence
-
-- [Interview explanations](./docs/INTERVIEW.md)
-- [Testing results and screenshots](./docs/TESTING.md)
-- [Screenshots](./docs/screenshots/)
